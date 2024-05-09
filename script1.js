@@ -1,7 +1,4 @@
 const {Client} = require('pg')
-const express = require('express');
-const app = express();
-
 
 function login(){
     event.preventDefault();
@@ -42,34 +39,3 @@ function sql(){
     })
 }
 
-
-// app.get('/', function (req, res) {
-
-//     // Config your database credential
-//     const config = {
-//         user: 'SA',
-//         password: 'Your_Password',
-//         server: 'localhost',
-//         database: 'geek'
-//     };
-
-//     // Connect to your database
-//     mssql.connect(config, function (err) {
-
-//         // Create Request object to perform
-//         // query operation
-//         let request = new mssql.Request();
-
-//         // Query to the database and get the records
-//         request.query('select * from student',
-//             function (err, records) {
-
-//                 if (err) console.log(err)
-
-//                 // Send records as a response
-//                 // to browser
-//                 res.send(records);
-
-//             });
-//     });
-// });
