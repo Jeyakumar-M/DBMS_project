@@ -1,4 +1,3 @@
-const {Client} = require('pg')
 
 function login(){
     event.preventDefault();
@@ -14,28 +13,22 @@ function login(){
 }
 
 
+// document.getElementById('searchButton').addEventListener('click',function(){
+//     document.getElementById('searchResult').classList.toggle('hidden');
+// })
+
 function sql(){
-
-    var search_name = document.getElementById('candidate_name').value;
-
-    const client = new Client({
-        host:"localhost",
-        user: "postgres",
-        port: 5432,
-        password: "Shriram@30704",
-        database: "Election"
-    })
+    var name = document.getElementById('candidate_name').value;
+    alert(name);
+    var c = '';
+    fetch(`http://172.19.0.65:8989/db_connector/${name}`)
+    .then(response => response.json())
+    .then(data => {document.getElementById('Name').value=data[0];
+    document.getElementById('sex').value=data;
+    });
+    console.log(c);
     
-    client.connect();
-    
-    client.query('select candidate from electiondetails where candidate = '+search_name,(err,res)=>{
-        if(!err){
-            document.getElementById('Name').value = res;
-        }else{
-            console.log(err.message);
-        }
-    
-        client.end; 
-    })
+    document.getElementById('sex').value=c;
+    // return c
 }
 
